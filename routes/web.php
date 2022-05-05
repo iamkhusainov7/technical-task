@@ -13,6 +13,8 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+use App\ApiDataProviders\GithubDataProvider;
+
+$router->get('/repository-statistics', [
+    'uses' => 'GithubRepositoryStatisticController@getRepositoryStatistics'
+]);
