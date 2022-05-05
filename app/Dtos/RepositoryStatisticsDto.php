@@ -11,6 +11,7 @@ class RepositoryStatisticsDto extends DtoTemplate
     public RepositoryDto $repositoryWithMostForks;
     public RepositoryDto $repositoryWithMostWatches;
     public RepositoryDto $repositoryWithMostStars;
+    public RepositoryDto $repositoryWithMostOpenIssues;
     public Collection    $repositories;
 
     public static function fromEntity(RepositoryStatisticEntity $entity): self
@@ -19,6 +20,7 @@ class RepositoryStatisticsDto extends DtoTemplate
             'repositoryWithMostForks' => RepositoryDto::fromEntity($entity->repositoryWithMostForks),
             'repositoryWithMostWatches' => RepositoryDto::fromEntity($entity->repositoryWithMostWatches),
             'repositoryWithMostStars' => RepositoryDto::fromEntity($entity->repositoryWithMostStars),
+            'repositoryWithMostOpenIssues' => RepositoryDto::fromEntity($entity->repositoryWithMostOpenIssues),
             'repositories' => $entity->repositories->map(fn (RepositoryEntity $repositoryEntity) => RepositoryDto::fromEntity($repositoryEntity)),
         ]);
     }

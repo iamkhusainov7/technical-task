@@ -19,6 +19,7 @@ class SimpleRepositoryStatisticService implements RepositoryComparisonStatisticI
         }
 
         $repositoryWithMostForks = $repositoryWithMostWatches = $repositoryWithMostStars = $repositories->first();
+        $repositoryWithMostOpenIssues = $repositoryWithMostStars;
 
         foreach ($repositories as $repository) {
             foreach ($repositories as $repositoryToBeCompared) {
@@ -30,6 +31,7 @@ class SimpleRepositoryStatisticService implements RepositoryComparisonStatisticI
                 $repositoryWithMostForks = $result->repositoryWithMostForks;
                 $repositoryWithMostWatches = $result->repositoryWithMostWatches;
                 $repositoryWithMostStars = $result->repositoryWithMostStars;
+                $repositoryWithMostOpenIssues = $result->repositoryWithMostOpenIssues;
             }
         }
 
@@ -37,6 +39,7 @@ class SimpleRepositoryStatisticService implements RepositoryComparisonStatisticI
             $repositoryWithMostForks,
             $repositoryWithMostWatches,
             $repositoryWithMostStars,
+            $repositoryWithMostOpenIssues,
             $repositories->keyBy(fn (RepositoryEntity $entity) => $entity->fullName)
         );
     }
@@ -45,22 +48,24 @@ class SimpleRepositoryStatisticService implements RepositoryComparisonStatisticI
         RepositoryEntity $firstRepo,
         RepositoryEntity $secondRepo
     ): RepositoryStatisticEntity {
-        $repositoryWithMostForks =
-            match ($firstRepo->forks <=> $secondRepo->forks) {
+        $repositoryWithMostForks = match ($firstRepo->forks <=> $secondRepo->forks) {
                 1 => $firstRepo,
                 -1 => $secondRepo,
                 default => null
             };
 
-        $repositoryWithMostWatches =
-            match ($firstRepo->watchers <=> $secondRepo->watchers) {
+        $repositoryWithMostWatches = match ($firstRepo->watchers <=> $secondRepo->watchers) {
                 1 => $firstRepo,
                 -1 => $secondRepo,
                 default => null
             };
 
-        $repositoryWithMostStars =
-            match ($firstRepo->stars <=> $secondRepo->stars) {
+        $repositoryWithMostStars = match ($firstRepo->stars <=> $secondRepo->stars) {
+                1 => $firstRepo,
+                -1 => $secondRepo,
+                default => null
+            };
+        $repositoryWithMostOpenIssues = match ($firstRepo->openIssues <=> $secondRepo->openIssues) {
                 1 => $firstRepo,
                 -1 => $secondRepo,
                 default => null
@@ -70,6 +75,7 @@ class SimpleRepositoryStatisticService implements RepositoryComparisonStatisticI
             $repositoryWithMostForks,
             $repositoryWithMostWatches,
             $repositoryWithMostStars,
+            $repositoryWithMostOpenIssues,
             collect([
                 $firstRepo->fullName => $firstRepo,
                 $secondRepo->fullName => $secondRepo,
