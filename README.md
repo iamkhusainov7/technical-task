@@ -83,7 +83,7 @@ docker-compose up -d
 
 `localhost:8080/repository-statistics`
 
-**Parameters**
+**Parameters** [Request Body]
 
 |                        Name | Required |  Type  | Description                                                                               |
 |----------------------------:|:--------:|:------:|-------------------------------------------------------------------------------------------|
