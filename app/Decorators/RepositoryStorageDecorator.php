@@ -5,7 +5,7 @@ namespace App\Decorators;
 use App\ApiDataProviders\RepositoryProviderInterface;
 use App\Entities\RepositoryEntity;
 use App\Exceptions\RepositoryNotExistsException;
-use App\Repositories\Contract\RepositoryEntityStorageInterface;
+use App\Storages\Contract\RepositoryEntityStorageInterface;
 use App\Services\RepositoryIdentifierParserServiceInterface;
 
 class RepositoryStorageDecorator implements RepositoryEntityStorageInterface

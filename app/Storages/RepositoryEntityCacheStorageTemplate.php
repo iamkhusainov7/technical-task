@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Storages;
 
 use App\Entities\RepositoryEntity;
 use App\Exceptions\RepositoryNotExistsException;
-use App\Repositories\Contract\RepositoryEntityStorageInterface;
+use App\Storages\Contract\RepositoryEntityStorageInterface;
 use Illuminate\Contracts\Cache\Repository;
 
 abstract class RepositoryEntityCacheStorageTemplate implements RepositoryEntityStorageInterface

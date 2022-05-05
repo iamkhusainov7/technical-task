@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dtos\RepositoryStatisticsDto;
 use App\Exceptions\RepositoryNotExistsException;
-use App\Repositories\Contract\RepositoryEntityStorageInterface;
+use App\Storages\Contract\RepositoryEntityStorageInterface;
 use App\Services\RepositoryComparisonStatisticInterface;
 use App\Services\RepositoryIdentifierParserServiceInterface;
 use App\ValidationRules\GithubStatisticsRequestValidationRule;

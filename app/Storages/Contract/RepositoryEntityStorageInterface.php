@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contract;
+namespace App\Storages\Contract;
 
 use App\Entities\RepositoryEntity;
 use App\Exceptions\RepositoryNotExistsException;
