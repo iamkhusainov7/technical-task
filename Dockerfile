@@ -37,3 +37,5 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 WORKDIR /var/www/html
 COPY . ./
+
+RUN chmod 755 storage -R
