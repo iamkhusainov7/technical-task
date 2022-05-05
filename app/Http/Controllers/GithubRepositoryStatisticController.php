@@ -6,12 +6,12 @@ use App\Dtos\RepositoryStatisticsDto;
 use App\Exceptions\RepositoryNotExistsException;
 use App\Storages\Contract\RepositoryEntityStorageInterface;
 use App\Services\RepositoryComparisonStatisticInterface;
-use App\Services\RepositoryIdentifierParserServiceInterface;
 use App\ValidationRules\GithubStatisticsRequestValidationRule;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationException;
 
 class GithubRepositoryStatisticController extends Controller
 {
@@ -31,7 +31,7 @@ class GithubRepositoryStatisticController extends Controller
      * @param  Request  $request
      *
      * @return JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function getRepositoryStatistics(Request $request): JsonResponse
     {
